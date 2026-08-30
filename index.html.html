@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Spirited Wanderer — Mobile Bar &amp; Hospitality</title>
+<meta name="description" content="The Spirited Wanderer is a mobile bar and hospitality company serving weddings, private celebrations, and events across North Florida. What you are hiring is a bartender who has thought of everything.">
+<meta property="og:title" content="The Spirited Wanderer — Mobile Bar &amp; Hospitality">
+<meta property="og:description" content="A career bartender and a beautifully appointed bar, brought to celebrations across North Florida. Spirits, well traveled.">
+<meta property="og:type" content="website">
+<!-- TODO: add og:image once you have a golden-hour photograph -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&family=Libre+Franklin:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<!--
+  ============================================================
+  THE SPIRITED WANDERER — one-page website  (EXPLORATORY name)
+  ------------------------------------------------------------
+  Keeps the Wandering Spirits visual language (celestial wordmark,
+  midnight + brass, Cormorant / Marcellus) with copy elevated toward
+  the refined "hospitality house" positioning from the brand guide.
+
+  BEFORE PUBLIC USE, replace:
+   - INSTAGRAM_HANDLE  (search & replace)
+   - EMAIL_ADDRESS in the form's error message — the aside + JSON-LD
+     currently use spiritedwanderer222@gmail.com; swap for a branded
+     address if this name is adopted.
+   - Gallery + portrait: real photographs when the season begins.
+   - Prices / guest counts if the services change.
+
+  Formspree endpoint below is already live (mwlkvepz).
+
+  TO PUBLISH (free): rename to index.html, drag onto app.netlify.com/drop.
+  ============================================================
+-->
+
+<style>
+  :root {
+    --night:      #1b2440;
+    --night-2:    #232e54;
+    --night-deep: #141b30;
+    --panel:      #212c50;
+    --panel-2:    #26315a;
+    --cream:      #f4ede0;
+    --cream-dim:  #c9c3b4;
+    --gold:       #c9a24a;
+    --gold-bright:#e3c079;
+    --amethyst:   #a99ccb;
+    --star:       #a9b5d8;
+    --field:      #19203a;
+    --line:       rgba(201,162,74,.30);
+    --line-soft:  rgba(169,181,216,.16);
+    --ok:         #8fce9f;
+    --err:        #e2988c;
+
+    --serif:"Cormorant Garamond","Cormorant",Garamond,"Palatino Linotype",Georgia,serif;
+    --roman:"Marcellus","Optima","Palatino Linotype",serif;
+    --sans:"Libre Franklin","Helvetica Neue",Arial,system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+
+    --wrap: 66rem;
+    --nav-h: 4.2rem;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--night);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--gold); color: var(--night-deep); }
+
+  a { color: var(--gold-bright); }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { margin: 0 0 1.05rem; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 1.5rem; }
+  section { scroll-margin-top: var(--nav-h); }
+
+  .eyebrow {
+    font-family: var(--roman);
+    font-size: .74rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1.1rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .eyebrow::before { content: ""; width: 1.5rem; height: 1px; background: var(--gold); opacity: .7; }
+  .center .eyebrow { justify-content: center; }
+
+  h2.h {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    line-height: 1.14;
+    margin: 0 0 1.2rem;
+    letter-spacing: .004em;
+  }
+  h2.h em { font-style: italic; color: var(--gold-bright); }
+  .lede { font-family: var(--serif); font-size: 1.4rem; line-height: 1.5; color: var(--cream); }
+  .muted { color: var(--cream-dim); }
+  .promise { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--gold-bright); margin-top: 1.4rem; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--roman);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: .78rem;
+    padding: .95rem 1.7rem;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    color: var(--night-deep);
+    background: var(--gold);
+    transition: background .15s ease, color .15s ease, transform .15s ease;
+  }
+  .btn:hover { background: var(--gold-bright); border-color: var(--gold-bright); }
+  .btn.ghost { background: transparent; color: var(--gold-bright); }
+  .btn.ghost:hover { background: rgba(201,162,74,.12); color: var(--gold-bright); }
+  @media (prefers-reduced-motion: no-preference) { .btn:active { transform: translateY(1px); } }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    height: var(--nav-h);
+    display: flex; align-items: center;
+    background: rgba(20,27,48,.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--cream); }
+  .brand svg { width: 22px; height: 22px; flex: none; }
+  .brand .bn { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.15rem; }
+  .brand .bn b { font-family: var(--roman); font-style: normal; font-weight: 400; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-left: .15rem; }
+  .navlinks { display: flex; align-items: center; gap: 1.6rem; }
+  .navlinks a {
+    font-family: var(--roman);
+    font-size: .76rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--cream); text-decoration: none;
+  }
+  .navlinks a:hover { color: var(--gold-bright); }
+  .navlinks .btn { color: var(--night-deep); }
+  .navtoggle { display: none; background: none; border: 0; color: var(--cream); font-size: 1.5rem; line-height: 1; cursor: pointer; padding: .3rem; }
+
+  @media (max-width: 52rem) {
+    .navtoggle { display: block; }
+    .navlinks {
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: rgba(20,27,48,.97);
+      border-bottom: 1px solid var(--line-soft);
+      max-height: 0; overflow: hidden;
+      transition: max-height .28s ease;
+    }
+    .navlinks.open { max-height: 24rem; }
+    .navlinks a { width: 100%; padding: 1rem 1.5rem; border-top: 1px solid var(--line-soft); text-align: left; }
+    .navlinks .btn { margin: 1rem 1.5rem; text-align: center; }
+    @media (prefers-reduced-motion: reduce) { .navlinks { transition: none; } }
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 92vh;
+    display: flex; align-items: center;
+    padding: calc(var(--nav-h) + 3rem) 0 4rem;
+    background: radial-gradient(130% 90% at 50% 0%, var(--night-2) 0%, var(--night) 55%, var(--night-deep) 100%);
+  }
+  #stars { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero .wrap { position: relative; z-index: 2; text-align: center; }
+  .hero-lockup { width: min(86vw, 31rem); margin: 0 auto 1.3rem; }
+  .hero-tag { font-family: var(--roman); letter-spacing: .34em; text-transform: uppercase; font-size: .8rem; color: var(--gold); margin: 0 0 1.6rem; }
+  .hero h1.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hero-sub { font-family: var(--serif); font-size: clamp(1.3rem, 2.6vw, 1.7rem); font-style: italic; color: var(--cream); max-width: 34rem; margin: 0 auto 2rem; }
+  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hero-area { margin-top: 1.8rem; font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; color: var(--star); }
+  .scrollcue { position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%); z-index: 2; font-family: var(--mono); font-size: .62rem; letter-spacing: .22em; color: var(--star); opacity: .6; }
+
+  /* ---------- generic section ---------- */
+  .band { padding: 5rem 0; border-top: 1px solid var(--line-soft); }
+  .band.deep { background: var(--night-deep); }
+  .band.center { text-align: center; }
+  .band.center .lede, .band.center p { margin-left: auto; margin-right: auto; max-width: 40rem; }
+
+  /* trust strip */
+  .trust { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 2rem; padding: 1.6rem 0; }
+  .trust span { font-family: var(--mono); font-size: .76rem; letter-spacing: .04em; color: var(--star); display: flex; align-items: center; gap: .55rem; }
+  .trust span::before { content: "\2726"; color: var(--gold); font-size: .7rem; }
+
+  /* how it works */
+  .steps { display: grid; gap: 1.5rem; grid-template-columns: 1fr; margin-top: 2rem; }
+  @media (min-width: 46rem) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { border: 1px solid var(--line-soft); border-radius: 3px; padding: 1.6rem; background: var(--panel); }
+  .step .moon { width: 30px; height: 30px; margin-bottom: 1rem; }
+  .step h3 { font-family: var(--roman); font-weight: 400; font-size: 1rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-bright); margin: 0 0 .5rem; }
+  .step p { font-size: .95rem; margin: 0; color: var(--cream); }
+  .fineprint { margin-top: 1.8rem; font-size: .92rem; color: var(--cream-dim); border-left: 2px solid var(--gold); padding-left: 1rem; }
+
+  /* packages */
+  .pkgs { display: grid; gap: 1.4rem; grid-template-columns: 1fr; margin-top: 2.2rem; }
+  @media (min-width: 50rem) { .pkgs { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+  .pkg { border: 1px solid var(--line-soft); border-radius: 3px; padding: 1.7rem 1.5rem; background: var(--panel); position: relative; }
+  .pkg.feature { border-color: var(--gold); background: var(--panel-2); }
+  .pkg .flag { position: absolute; top: -.7rem; left: 1.5rem; background: var(--gold); color: var(--night-deep); font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 2px; }
+  .pkg .name { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.7rem; color: var(--cream); }
+  .pkg .spec { font-family: var(--mono); font-size: .76rem; color: var(--star); margin: .5rem 0 .3rem; letter-spacing: .02em; }
+  .pkg .price { font-family: var(--roman); font-size: .95rem; letter-spacing: .06em; color: var(--gold-bright); margin-bottom: .9rem; }
+  .pkg .blurb { font-size: .93rem; color: var(--cream-dim); margin: 0; }
+  .addons { margin-top: 2rem; }
+  .addons h3 { font-family: var(--roman); font-weight: 400; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin: 0 0 .8rem; }
+  .addons ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem .5rem; }
+  .addons li { font-family: var(--mono); font-size: .78rem; color: var(--cream); border: 1px solid var(--line-soft); border-radius: 2px; padding: .35rem .7rem; }
+  .pkg-note { margin-top: 1.4rem; font-size: .9rem; color: var(--cream-dim); }
+
+  /* gallery */
+  .gal { display: grid; gap: 6px; grid-template-columns: repeat(2, 1fr); margin-top: 2rem; }
+  @media (min-width: 46rem) { .gal { grid-template-columns: repeat(4, 1fr); } }
+  .gal figure { margin: 0; position: relative; aspect-ratio: 4 / 5; border-radius: 2px; overflow: hidden; border: 1px solid var(--line-soft); }
+  .gal svg { width: 100%; height: 100%; }
+  .gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: .5rem .6rem; font-family: var(--mono); font-size: .64rem; letter-spacing: .03em; color: var(--cream); background: linear-gradient(transparent, rgba(20,27,48,.88)); }
+
+  /* about */
+  .about-grid { display: grid; gap: 2.4rem; grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 52rem) { .about-grid { grid-template-columns: 1.1fr .9fr; } }
+  .about-portrait { border: 1px solid var(--line); border-radius: 3px; aspect-ratio: 4 / 5; overflow: hidden; max-width: 22rem; margin: 0 auto; width: 100%; }
+  .about-portrait svg { width: 100%; height: 100%; display: block; }
+
+  /* service area */
+  .roam-list { font-family: var(--serif); font-size: 1.5rem; font-style: italic; color: var(--cream); line-height: 1.7; }
+
+  /* faq */
+  .faq { margin-top: 1.8rem; border-top: 1px solid var(--line-soft); }
+  .faq details { border-bottom: 1px solid var(--line-soft); }
+  .faq summary {
+    cursor: pointer; list-style: none;
+    padding: 1.1rem 2rem 1.1rem 0; position: relative;
+    font-family: var(--serif); font-size: 1.22rem; color: var(--cream);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: .2rem; top: 1rem; color: var(--gold); font-family: var(--sans); font-size: 1.3rem; transition: transform .2s ease; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq .a { padding: 0 1rem 1.2rem 0; color: var(--cream-dim); font-size: .96rem; }
+  .faq .a p { margin: 0; }
+
+  /* contact / form */
+  .form-grid { display: grid; gap: 2.4rem; grid-template-columns: 1fr; margin-top: 2rem; }
+  @media (min-width: 52rem) { .form-grid { grid-template-columns: 1.15fr .85fr; } }
+  form.inquiry { display: grid; gap: 1rem; }
+  .row2 { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 34rem) { .row2 { grid-template-columns: 1fr; } }
+  label { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--star); display: block; margin-bottom: .35rem; }
+  .field { display: flex; flex-direction: column; }
+  input, select, textarea {
+    width: 100%;
+    font-family: var(--sans); font-size: .95rem;
+    color: var(--cream); background: var(--field);
+    border: 1px solid var(--line-soft); border-radius: 2px;
+    padding: .7rem .8rem;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+  textarea { min-height: 6.5rem; resize: vertical; }
+  select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 18px) 1.15rem, calc(100% - 12px) 1.15rem; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  form.inquiry button { justify-self: start; cursor: pointer; }
+  .form-msg { font-size: .92rem; padding: .3rem 0; }
+  .form-msg.ok { color: var(--ok); }
+  .form-msg.err { color: var(--err); }
+  .contact-aside p { font-size: .95rem; color: var(--cream-dim); }
+  .contact-aside .direct { font-family: var(--mono); font-size: .86rem; color: var(--cream); display: grid; gap: .5rem; margin-top: 1rem; }
+  .contact-aside .direct a { color: var(--gold-bright); text-decoration: none; }
+
+  /* footer */
+  footer.site { background: var(--night-deep); border-top: 1px solid var(--line-soft); padding: 3.2rem 0 2.4rem; text-align: center; }
+  footer.site .fmark { width: 30px; height: 30px; margin: 0 auto .8rem; }
+  footer.site .fname { font-family: var(--serif); font-style: italic; font-size: 1.4rem; }
+  footer.site .fdesc { font-family: var(--roman); letter-spacing: .28em; text-transform: uppercase; font-size: .58rem; color: var(--star); margin: .45rem 0 .2rem; }
+  footer.site .ftag { font-family: var(--roman); letter-spacing: .3em; text-transform: uppercase; font-size: .68rem; color: var(--gold); margin: .3rem 0 1.4rem; }
+  footer.site .flinks { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1.4rem; font-family: var(--roman); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.4rem; }
+  footer.site .flinks a { color: var(--cream); text-decoration: none; }
+  footer.site .flinks a:hover { color: var(--gold-bright); }
+  footer.site .legal { font-family: var(--mono); font-size: .68rem; color: var(--star); line-height: 1.7; }
+
+  :focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; border-radius: 2px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--gold); color: var(--night-deep); padding: .6rem 1rem; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="The Spirited Wanderer home">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 5 A15 15 0 1 0 20 35 A6.8 15 0 1 0 20 5 Z" fill="#c9a24a"/>
+        <path d="M32 12 l1.4 4.2 4.4 0 -3.6 2.6 1.4 4.2 -3.6 -2.6 -3.6 2.6 1.4 -4.2 -3.6 -2.6 4.4 0 Z" fill="#f4ede0"/>
+      </svg>
+      <span class="bn">The Spirited <b>Wanderer</b></span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="navlinks" aria-label="Menu">&#9776;</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#how">How It Works</a>
+      <a href="#packages">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Inquire</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<header class="hero">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <svg class="hero-lockup" viewBox="0 0 520 262" role="img" aria-label="The Spirited Wanderer">
+      <g fill="none" stroke="#c9a24a" stroke-width="1.3"><path d="M78 150 A182 182 0 0 1 442 150" stroke-opacity=".8"/></g>
+      <g transform="translate(260 60)">
+        <path d="M0 -20 A20 20 0 1 0 0 20 A9 20 0 1 0 0 -20 Z" fill="#c9a24a"/>
+        <path d="M24 -6 l2.2 6.6 6.8 0 -5.5 4.1 2.1 6.6 -5.6 -4 -5.6 4 2.1 -6.6 -5.5 -4.1 6.8 0 Z" fill="#f4ede0"/>
+      </g>
+      <text x="260" y="112" text-anchor="middle" font-family="Marcellus, serif" fill="#c9a24a" font-size="15" letter-spacing="9">THE</text>
+      <text x="260" y="176" text-anchor="middle" font-family="Cormorant Garamond, Garamond, serif" fill="#f4ede0"><tspan font-style="italic" font-weight="500" font-size="62">Spirited</tspan></text>
+      <text x="260" y="222" text-anchor="middle" font-family="Marcellus, serif" fill="#f4ede0" font-size="28" letter-spacing="10">WANDERER</text>
+      <g stroke="#c9a24a" stroke-width="1.1"><line x1="120" y1="196" x2="212" y2="196"/><line x1="308" y1="196" x2="400" y2="196"/><path d="M260 190 l5 6 -5 6 -5 -6 Z" fill="#c9a24a" stroke="none"/></g>
+    </svg>
+    <p class="hero-tag">Spirits, well traveled</p>
+    <h1 class="sr">The Spirited Wanderer — mobile bar and hospitality for weddings and celebrations across North Florida</h1>
+    <p class="hero-sub">A career bartender and a beautifully appointed bar, brought to weddings, private celebrations, and gatherings across North Florida.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Inquire About Your Date</a>
+      <a class="btn ghost" href="#packages">See Our Services</a>
+    </div>
+    <p class="hero-area">Jacksonville &middot; St. Augustine &middot; Amelia Island &middot; Ponte Vedra &middot; Tallahassee</p>
+  </div>
+  <div class="scrollcue" aria-hidden="true">SCROLL</div>
+</header>
+
+<main id="main">
+
+  <div class="trust wrap" role="list">
+    <span role="listitem">A decade behind the bar</span>
+    <span role="listitem">Insured &mdash; liquor liability included</span>
+    <span role="listitem">TIPS-certified</span>
+    <span role="listitem">Your venue named additional insured</span>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="band deep" id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h">You host. We bring <em>everything but the bottles.</em></h2>
+      <p class="lede muted">The Spirited Wanderer is a dry-hire bar &mdash; you provide and own the spirits, and we bring the bar, the bartenders, the mixers, the glassware, and the care that makes it feel effortless.</p>
+      <div class="steps">
+        <div class="step">
+          <svg class="moon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="#c9a24a" stroke-width="1.5"/></svg>
+          <h3>Choose your service</h3>
+          <p>Select a service, shape the menu with us, and reserve the date with a signed agreement and a deposit.</p>
+        </div>
+        <div class="step">
+          <svg class="moon" viewBox="0 0 40 40" aria-hidden="true"><defs><mask id="mm1"><rect width="40" height="40" fill="#fff"/><circle cx="27" cy="20" r="15" fill="#000"/></mask></defs><circle cx="20" cy="20" r="14" fill="#c9a24a" mask="url(#mm1)"/><circle cx="20" cy="20" r="14" fill="none" stroke="#c9a24a" stroke-width="1"/></svg>
+          <h3>Provide the spirits</h3>
+          <p>We send a precise list, matched to your final guest count and menu &mdash; down to the bottle. You buy it from any licensed retailer, and it remains yours.</p>
+        </div>
+        <div class="step">
+          <svg class="moon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="#c9a24a"/></svg>
+          <h3>Leave the rest to us</h3>
+          <p>We arrive early, set up, pour with care from the first drink to the last, close the bar gracefully, and leave the space exactly as we found it.</p>
+        </div>
+      </div>
+      <p class="fineprint">Because the spirits are yours and nothing is sold at your event, an unlicensed venue stays worry-free &mdash; no liquor license needed. If your county or venue keeps a host rule of its own, we&rsquo;ll help you identify it.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="band" id="packages">
+    <div class="wrap">
+      <p class="eyebrow">Bar service</p>
+      <h2 class="h">Three ways to pour</h2>
+      <p class="lede muted">Every service includes the bar, setup and teardown, professional bartenders, a menu built for the occasion, ice, glassware, napkins, and garnish. The spirits are always yours to provide.</p>
+
+      <div class="pkgs">
+        <div class="pkg">
+          <div class="name">The House Bar</div>
+          <div class="spec">Up to 50 guests &middot; 3 hours &middot; 2 bartenders</div>
+          <div class="price">from $650</div>
+          <p class="blurb">For welcome hours, showers, and smaller gatherings.</p>
+        </div>
+        <div class="pkg feature">
+          <span class="flag">Most requested</span>
+          <div class="name">The Reserve</div>
+          <div class="spec">Up to 90 guests &middot; 4 hours &middot; 2 bartenders</div>
+          <div class="price">from $1,050</div>
+          <p class="blurb">The wedding standard &mdash; enough time and hands for a full reception.</p>
+        </div>
+        <div class="pkg">
+          <div class="name">The Grand Pour</div>
+          <div class="spec">Up to 130 guests &middot; 5 hours &middot; 3 bartenders</div>
+          <div class="price">from $1,500</div>
+          <p class="blurb">For larger weddings and galas, with a signature-cocktail menu and printed cards.</p>
+        </div>
+      </div>
+
+      <div class="addons">
+        <h3>Also available</h3>
+        <ul>
+          <li>The Welcome Pour &mdash; arrival drinks</li>
+          <li>The Nightcap &mdash; late-night service</li>
+          <li>The Satellite Bar &mdash; a second bar</li>
+          <li>The Signature Menu &mdash; custom cocktails</li>
+          <li>Mixer, garnish &amp; ice package</li>
+          <li>Real-glass service</li>
+          <li>A full alcohol-free menu</li>
+          <li>Brunch service</li>
+        </ul>
+      </div>
+      <p class="pkg-note">Prices are starting points, shaped by guest count, hours, travel, and additions. Share your details and we&rsquo;ll prepare a proper quote.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="band deep" id="gallery">
+    <div class="wrap">
+      <p class="eyebrow">The bar, in its setting</p>
+      <h2 class="h">A look at the evening</h2>
+      <p class="muted">Photography follows each event. The easiest way to follow along is <a href="https://instagram.com/INSTAGRAM_HANDLE">Instagram</a>.</p>
+
+      <!-- ========= PHOTOGRAPHY PLACEHOLDERS — replace each <figure> with a real image =========
+           <figure><img src="images/oaks.jpg" alt="The bar under live oaks at golden hour"><figcaption>Under the oaks, golden hour</figcaption></figure>
+           Keep the 4:5 aspect ratio for a tidy grid.
+      -->
+      <div class="gal">
+        <figure>
+          <svg viewBox="0 0 80 100" aria-hidden="true"><rect width="80" height="100" fill="#1b2440"/><g fill="#e3c079"><circle cx="16" cy="18" r="1.4"/><circle cx="40" cy="12" r="1"/><circle cx="64" cy="22" r="1.4"/><circle cx="28" cy="30" r="1"/><circle cx="54" cy="34" r="1"/></g><path d="M40 46 A16 16 0 1 0 40 78 A7 16 0 1 0 40 46 Z" fill="#c9a24a"/></svg>
+          <figcaption>Under the oaks, golden hour</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 80 100" aria-hidden="true"><rect width="80" height="100" fill="#232e54"/><g fill="none" stroke="#c9a24a" stroke-width="1.6"><path d="M22 40 A18 10 0 0 0 58 40"/><line x1="40" y1="54" x2="40" y2="72"/><path d="M28 80 A12 4 0 0 1 52 80"/></g><path d="M40 20 l1.6 4.6 4.8 0 -3.9 2.9 1.5 4.6 -4-2.9 -4 2.9 1.5-4.6 -3.9-2.9 4.8 0 Z" fill="#f4ede0"/></svg>
+          <figcaption>A cocktail, finished</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 80 100" aria-hidden="true"><rect width="80" height="100" fill="#141b30"/><path d="M12 34 Q40 44 68 34" fill="none" stroke="#c9a24a" stroke-opacity=".5"/><g fill="#e3c079"><circle cx="20" cy="37.5" r="2"/><circle cx="34" cy="41" r="2"/><circle cx="48" cy="41" r="2"/><circle cx="62" cy="37.5" r="2"/></g><rect x="22" y="52" width="36" height="34" rx="6" fill="#1b2440" stroke="#c9a24a"/></svg>
+          <figcaption>The bar at dusk</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 80 100" aria-hidden="true"><rect width="80" height="100" fill="#20294a"/><g stroke="#c9a24a" stroke-width="0.7" opacity=".8"><path d="M18 24 L40 46 L58 20 M40 46 L64 60 M40 46 L26 70"/></g><g fill="#a9b5d8"><circle cx="18" cy="24" r="1.6"/><circle cx="40" cy="46" r="1.8"/><circle cx="58" cy="20" r="1.6"/><circle cx="64" cy="60" r="1.4"/><circle cx="26" cy="70" r="1.4"/></g></svg>
+          <figcaption>The back bar</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="band" id="about">
+    <div class="wrap">
+      <p class="eyebrow">Behind the bar</p>
+      <div class="about-grid">
+        <div>
+          <h2 class="h">What you&rsquo;re <em>really</em> hiring</h2>
+          <p>The Spirited Wanderer began with a simple conviction: the best part of any celebration is the person behind the bar &mdash; the one making your drink, reading the room, and quietly making sure everyone is looked after.</p>
+          <p>After more than a decade tending bar &mdash; busy rooms, weddings, private events &mdash; I built a bar that travels, so that same care could arrive at the estates, farms, and coastal properties where North Florida gathers.</p>
+          <p>What you&rsquo;re hiring isn&rsquo;t a trailer, and it isn&rsquo;t the alcohol. It&rsquo;s hospitality made to feel effortless &mdash; polished service, thoughtful details, and a real sense of occasion, wherever people come together.</p>
+          <p>The look is drawn from old star charts: brass on deep midnight, a single fixed point to steer by. Polaris &mdash; the star that has always guided travelers home.</p>
+          <p class="promise">Beautifully appointed. Thoughtfully served. Dependably handled.</p>
+          <p class="muted">&mdash; [Owner Name], founder</p>
+        </div>
+        <div class="about-portrait" aria-hidden="true">
+          <!-- Swap for a real portrait: <img src="images/owner.jpg" alt="[Owner Name], founder of The Spirited Wanderer"> -->
+          <svg viewBox="0 0 80 100"><rect width="80" height="100" fill="#1b2440"/><g transform="translate(40 46)"><path d="M0 -20 A20 20 0 1 0 0 20 A9 20 0 1 0 0 -20 Z" fill="#c9a24a"/><path d="M22 -7 l1.9 5.6 5.8 0 -4.7 3.5 1.8 5.6 -4.8 -3.4 -4.8 3.4 1.8 -5.6 -4.7 -3.5 5.8 0 Z" fill="#f4ede0"/></g><text x="40" y="82" text-anchor="middle" font-family="Marcellus, serif" font-size="6" letter-spacing="2.4" fill="#f4ede0">EST. NORTH FLORIDA</text></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="band deep center" id="area">
+    <div class="wrap">
+      <p class="eyebrow">Where we travel</p>
+      <h2 class="h">Across North Florida</h2>
+      <p class="roam-list">Jacksonville &middot; St. Augustine &middot; Amelia Island<br>Ponte Vedra &middot; Fernandina Beach &middot; Tallahassee</p>
+      <p class="muted">Home base is Madison. Traveling to a venue farther out is usually a yes &mdash; it is simply part of the quote.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Questions, answered</p>
+      <h2 class="h">Good to know</h2>
+      <div class="faq">
+        <details>
+          <summary>Do we need a liquor license?</summary>
+          <div class="a"><p>Generally, no. You provide and own the spirits, and nothing is sold at your event, so it sits outside Florida&rsquo;s liquor-licensing requirements. If your venue or county keeps a host rule of its own, we&rsquo;ll help you identify it.</p></div>
+        </details>
+        <details>
+          <summary>How is the alcohol handled?</summary>
+          <div class="a"><p>We send a precise list &mdash; types, quantities, and a sensible reserve &mdash; matched to your final guest count and menu. You purchase it from any licensed retailer; it stays yours, and anything unopened goes home with you.</p></div>
+        </details>
+        <details>
+          <summary>What do you need on site?</summary>
+          <div class="a"><p>A firm, roughly level area of about twelve by twelve feet, a clear path to bring the bar in, and either a standard outlet within about fifty feet or a word ahead of time to bring our own quiet power. We carry our own water.</p></div>
+        </details>
+        <details>
+          <summary>How far ahead should we reserve?</summary>
+          <div class="a"><p>Popular spring and fall dates are often reserved eight to twelve months out. If your date is nearer, it is still worth asking.</p></div>
+        </details>
+        <details>
+          <summary>What if the weather turns?</summary>
+          <div class="a"><p>We serve through most conditions. For lightning or genuinely unsafe weather we may pause, so an outdoor event should have a sheltered alternative for the bar and guests.</p></div>
+        </details>
+        <details>
+          <summary>Do you offer non-alcoholic options?</summary>
+          <div class="a"><p>Yes &mdash; a full alcohol-free menu, or a few considered options alongside the main list.</p></div>
+        </details>
+        <details>
+          <summary>How is a date reserved?</summary>
+          <div class="a"><p>A signed agreement and a deposit hold your date; the balance is due before the event. Send an inquiry below and we&rsquo;ll take it from there.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="band deep" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Inquire about your date</p>
+      <h2 class="h">Tell us about your <em>celebration</em></h2>
+      <div class="form-grid">
+        <div>
+          <form class="inquiry" action="https://formspree.io/f/mwlkvepz" method="POST" novalidate>
+            <div class="row2">
+              <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
+              <div class="field"><label for="f-partner">Partner&rsquo;s name (optional)</label><input id="f-partner" name="partner" autocomplete="off"></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email"></div>
+              <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" name="phone" autocomplete="tel"></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="f-date">Event date</label><input id="f-date" type="date" name="event_date"></div>
+              <div class="field"><label for="f-guests">Estimated guests</label><input id="f-guests" type="number" name="guests" min="1" inputmode="numeric"></div>
+            </div>
+            <div class="field"><label for="f-loc">Venue or location</label><input id="f-loc" name="location"></div>
+            <div class="field">
+              <label for="f-pkg">Service of interest</label>
+              <select id="f-pkg" name="service">
+                <option value="Not sure yet">Not sure yet &mdash; we&rsquo;d welcome a recommendation</option>
+                <option value="The House Bar">The House Bar</option>
+                <option value="The Reserve">The Reserve</option>
+                <option value="The Grand Pour">The Grand Pour</option>
+                <option value="Alcohol-free menu">Alcohol-free menu</option>
+              </select>
+            </div>
+            <div class="field"><label for="f-msg">A little about the day</label><textarea id="f-msg" name="message" placeholder="The setting, the feel you are after, anything you would like us to know&hellip;"></textarea></div>
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="_subject" value="New inquiry — The Spirited Wanderer">
+            <button class="btn" type="submit">Send Inquiry</button>
+            <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <aside class="contact-aside">
+          <p>We usually reply within one to two days with availability and a quote. If your date is near, please mention it and we&rsquo;ll move quickly.</p>
+          <div class="direct">
+            <span>Call or text &nbsp;<a href="tel:850-347-2697">850-347-2697</a></span>
+            <span>Email &nbsp;<a href="mailto:spiritedwanderer222@gmail.com">spiritedwanderer222@gmail.com</a></span>
+            <span>Instagram &nbsp;<a href="https://instagram.com/INSTAGRAM_HANDLE">@INSTAGRAM_HANDLE</a></span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <svg class="fmark" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20 5 A15 15 0 1 0 20 35 A6.8 15 0 1 0 20 5 Z" fill="#c9a24a"/>
+      <path d="M32 12 l1.4 4.2 4.4 0 -3.6 2.6 1.4 4.2 -3.6 -2.6 -3.6 2.6 1.4 -4.2 -3.6 -2.6 4.4 0 Z" fill="#f4ede0"/>
+    </svg>
+    <div class="fname">The Spirited Wanderer</div>
+    <div class="fdesc">Mobile Bar &amp; Hospitality</div>
+    <div class="ftag">Spirits, well traveled</div>
+    <div class="flinks">
+      <a href="#how">How It Works</a>
+      <a href="#packages">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="https://instagram.com/INSTAGRAM_HANDLE">Instagram</a>
+    </div>
+    <p class="legal">
+      The Spirited Wanderer LLC &nbsp;&middot;&nbsp; North Florida &nbsp;&middot;&nbsp; Fully insured, liquor liability included &nbsp;&middot;&nbsp; TIPS-certified<br>
+      Dry-hire bar service &mdash; the client provides the spirits; nothing is sold on site. &nbsp;&copy; 2026 The Spirited Wanderer LLC.
+    </p>
+  </div>
+</footer>
+
+<script>
+  /* ---------- mobile nav ---------- */
+  (function () {
+    var btn = document.querySelector(".navtoggle");
+    var links = document.getElementById("navlinks");
+    if (!btn || !links) return;
+    btn.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") { links.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+    });
+  })();
+
+  /* ---------- starfield ---------- */
+  (function () {
+    var c = document.getElementById("stars");
+    if (!c || !c.getContext) return;
+    var ctx = c.getContext("2d");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var stars = [], w, h, dpr, raf;
+    function seed() {
+      w = c.clientWidth; h = c.clientHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round(w * h / 10000);
+      stars = [];
+      for (var i = 0; i < n; i++) stars.push({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.2 + 0.3,
+        base: Math.random() * 0.5 + 0.12, amp: Math.random() * 0.4,
+        ph: Math.random() * 6.28, sp: Math.random() * 0.0011 + 0.0004
+      });
+    }
+    function frame(t) {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < stars.length; i++) {
+        var s = stars[i];
+        var a = reduce ? s.base + s.amp * 0.5 : s.base + s.amp * (0.5 + 0.5 * Math.sin(s.ph + t * s.sp));
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.2832);
+        ctx.fillStyle = "rgba(233,224,200," + a.toFixed(3) + ")"; ctx.fill();
+      }
+      ctx.strokeStyle = "rgba(201,162,74,.14)"; ctx.lineWidth = 1;
+      if (stars.length > 6) {
+        ctx.beginPath(); ctx.moveTo(stars[0].x, stars[0].y);
+        for (var k = 1; k < 5; k++) ctx.lineTo(stars[k].x, stars[k].y);
+        ctx.stroke();
+      }
+      if (!reduce) raf = requestAnimationFrame(frame);
+    }
+    function start() { seed(); cancelAnimationFrame(raf); reduce ? frame(0) : (raf = requestAnimationFrame(frame)); }
+    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(start, 200); });
+    start();
+  })();
+
+  /* ---------- inquiry form ---------- */
+  (function () {
+    var form = document.querySelector("form.inquiry");
+    var msg = document.getElementById("form-msg");
+    if (!form || !msg) return;
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      msg.className = "form-msg";
+      msg.textContent = "Sending…";
+      try {
+        var res = await fetch(form.action, {
+          method: "POST", body: new FormData(form), headers: { "Accept": "application/json" }
+        });
+        if (res.ok) {
+          form.reset();
+          msg.className = "form-msg ok";
+          msg.textContent = "Thank you — your inquiry has been received. We will be in touch shortly.";
+        } else {
+          throw new Error("bad status");
+        }
+      } catch (err) {
+        msg.className = "form-msg err";
+        msg.textContent = "Something interfered with sending that. Please write to us directly at spiritedwanderer222@gmail.com.";
+      }
+    });
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "The Spirited Wanderer",
+  "description": "Mobile bar and hospitality company providing dry-hire bar service for weddings, private celebrations, and events across North Florida.",
+  "slogan": "Spirits, well traveled.",
+  "areaServed": ["Jacksonville", "St. Augustine", "Amelia Island", "Ponte Vedra", "Fernandina Beach", "Tallahassee", "North Florida"],
+  "telephone": "850-347-2697",
+  "email": "spiritedwanderer222@gmail.com",
+  "priceRange": "$500-$3000",
+  "sameAs": ["https://instagram.com/INSTAGRAM_HANDLE"]
+}
+</script>
+
+</body>
+</html>
